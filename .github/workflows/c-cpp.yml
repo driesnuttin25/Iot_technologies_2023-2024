@@ -16,8 +16,14 @@ jobs:
     - name: Install C++ Compiler
       run: sudo apt-get install -y g++
 
+    - name: Install ARM Cross-Compiler
+      run: sudo apt-get install -y g++-arm-linux-gnueabihf
+
     - name: Compile hello_world.cpp
       run: g++ hello_world.cpp -o hello_world
 
     - name: Run hello_world
       run: ./hello_world
+
+    - name: Cross-Compile for Pynq Z2
+      run: arm-linux-gnueabihf-g++ hello_world.cpp -o hello_world_arm
